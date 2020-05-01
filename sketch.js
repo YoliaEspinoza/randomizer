@@ -1,66 +1,92 @@
 //places i love
-
-let places = [{
+let names = [{
   name: "morelia",
-  color: "brown"
+  // color: "brown"
 }, {
   name: "big sur",
-  color: "green"
-}, {
-  name: "ukiah",
-  color: "dark red"
+  // color: "green"
 }, {
   name: "yosemite",
-  color: "gold"
+  // color: "gold"
 }, {
   name: "santa cruz",
-  color: "orange"
+  // color: "orange"
 }, {
   name: "grand canyon",
-  color: "mauve"
+  // color: "mauve"
 }, {
   name: "sf",
-  color: "red"
+  // color: "red"
 }, {
   name: "oakland",
-  color: "black"
+  // color: "black"
 }, {
   name: "zion",
-  color: "yellow"
+  // color: "yellow"
 }, {
   name: "patzcuaro",
-  color: "silver"
+  // color: "bronze"
 }];
-
 let randomIndex;
+let animating = false;
+let imageCounter = 1;
+let button;
+let places = []
 
-function setup() {
-  createCanvas(1000, 1000);
-  background(200);
-  textSize(35);
-
-  text("click to randomize");
+function preload() {
+  for (let i = 0; i <= 8; i++) {
+    places[i] = loadImage(`assets/places_${i+1}.jpg`)
+  }
 }
 
+function setup() {
+  createCanvas(600, 600);
+  background(143, 188, 143);
+  textSize(35);
+  textFont('Apercu');
+  textAlign (CENTER);
+  imageMode(CENTER);
+  frameRate(10);
 
-function draw() {}
+  button = select('#randbutton')
+  button.mousePressed(buttonPressed);
+  button.class("mainbutton");
+  console.log(places);
+}
 
-function mousePressed() {
+function draw() {
+  background(143, 188, 143);
+  if (animating == true) {
+    // clear();
+    image(places[imageCounter], width / 2, height / 2);
+    if (imageCounter < places.length - 1) {
+      imageCounter++;
+      console.log(imageCounter);
+    } else {
+      imageCounter = 1;
 
-  if (places[0]) {
-    //this displays random name/splices it out of array
-    background(random(100, 200));
-    randomIndex = int(random(places.length));
-
-    // console.log(places[randomIndex].name);
-    text(places[randomIndex].name, 50, 50);
-    places.splice(randomIndex, 1);
-    // console.log(places);
-
-  } else {
-    background(random(111, 222));
-    text("GAME OVER");
+    }
   }
+}
+
+function randomizer() {
+  animating = false;
+  if (names[0]) {
+    // background(random(200, 255));
+    clear();
+    randomIndex = int(random(places.length));
+    image(random(places), width / 2, height / 2);
+    text(names[randomIndex].name, width / 2, height - 25);
+    places.splice(randomIndex, 1);
+  } else {
+    background(random(200, 255));
+
+  }
+}
+
+function buttonPressed() {
+  animating = true;
+  setTimeout(randomizer, 3000);
 }
 
 
@@ -77,7 +103,6 @@ function mousePressed() {
 // places[8]= "zion";
 // places[9]= "patzcuaro";
 
-
 // console.log("initial array is");
 // console.log(places);
 //
@@ -85,7 +110,15 @@ function mousePressed() {
 // console.log("array after pop");
 // console.log(places);
 //
-// places.push("forks from twilight");
-//
 // console.log ("array after push");
+// console.log(places);
+
+// text("click to play", width / 2, height / 2);
+// setInterval(changeBackground, 600);
+// button = createButton("click to play");
+// console.log(places);
+
+//this displays random name/splices it out of array
+// background(random(100, 200));
+// console.log(places[randomIndex].name);
 // console.log(places);

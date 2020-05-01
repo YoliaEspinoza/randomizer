@@ -1,7 +1,32 @@
 html, body {
-  margin: 0;
-  padding: 0;
+  margin: 3;
+  padding: 5;
 }
+
 canvas {
   display: block;
+  position: sticky;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: "apercu";
+  width: 100%;
+  font: Apercu;
+  text-align: center;
+}
+
+.pparagraph {
+  font-family: "apercu";
+  text-align: center;
+  width: 100%;
+  display: blocks;
+}
+
+.mainbutton {
+  font-family: "apercu";
+  background-color: #0a7a80;
+  padding: 15px;
+  position:sticky;
+  bottom: 175px;
 }
