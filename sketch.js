@@ -44,7 +44,7 @@ function setup() {
   background(143, 188, 143);
   textSize(35);
   textFont('Apercu');
-  textAlign (CENTER);
+  textAlign (CENTER); 
   imageMode(CENTER);
   frameRate(10);
 
